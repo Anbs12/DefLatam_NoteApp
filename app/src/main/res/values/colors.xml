@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Colores base para el tema claro -->
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="gray_light">#F5F5F5</color>
     <color name="gray_dark">#212121</color>
     <color name="red_error">#B00020</color>
     <color name="green_success">#4CAF50</color>
 
     <!-- Colores de la App - Modo Claro -->
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryVariant">#3700B3</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#0A87FB</color>
+    <color name="colorPrimaryVariant">#007BEE</color>
+    <color name="colorOnPrimary">#000000</color>
     <color name="colorSecondary">#03DAC5</color>
     <color name="colorSecondaryVariant">#018786</color>
     <color name="colorOnSecondary">#000000</color>

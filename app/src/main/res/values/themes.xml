@@ -13,6 +13,10 @@
         <!-- Color de la barra de estado. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
+
+
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+
     </style>
 
     <style name="Theme.DefLatam_NoteApp" parent="Base.Theme.DefLatam_NoteApp" />

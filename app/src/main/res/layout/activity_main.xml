@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/Base.Theme.DefLatam_NoteApp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -46,7 +47,9 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="16dp"
         android:text="Exportar notas"
-        app:icon="@android:drawable/ic_menu_save" />
+        app:icon="@android:drawable/ic_menu_save"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorOnPrimary"/>
 
     <!-- Botón flotante para nueva nota -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -56,6 +59,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="@string/desc_fab_agregar"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:backgroundTint="@color/colorPrimary"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

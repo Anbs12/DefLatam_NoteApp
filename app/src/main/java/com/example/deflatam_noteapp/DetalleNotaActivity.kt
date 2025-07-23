@@ -72,41 +72,6 @@ class DetalleNotaActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * Lanza un Intent para que el usuario elija dónde guardar el archivo.
-     * El nombre del archivo sugerido es el título de la nota.
-     */
-    private fun lanzarIntentExportacion() {
-        val tituloYcontenido = binding.etTitulo.text.isEmpty() || binding.etContenido.text.isEmpty()
-        if (tituloYcontenido) {
-            Toast.makeText(this, "Sin titulo y descripcion. Imposible", Toast.LENGTH_SHORT).show()
-        } else {
-            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                type = "text/plain"
-                val nombreArchivo = "${nota?.titulo?.replace(" ", "_") ?: "Nota"}.txt"
-                putExtra(Intent.EXTRA_TITLE, nombreArchivo)
-            }
-            exportarNotaLauncher.launch(intent)
-        }
-    }
-
-    /**
-     * Escribe el contenido de texto en el archivo seleccionado por el usuario.
-     * Reutiliza la misma lógica que MainActivity.
-     */
-    private fun escribirContenidoEnUri(uri: Uri, contenido: String) {
-        try {
-            contentResolver.openOutputStream(uri)?.use { outputStream ->
-                outputStream.write(contenido.toByteArray())
-                Toast.makeText(this, "Nota exportada con éxito", Toast.LENGTH_LONG).show()
-            }
-        } catch (e: IOException) {
-            Toast.makeText(this, "Error al exportar la nota", Toast.LENGTH_LONG).show()
-            e.printStackTrace()
-        }
-    }
-
     private fun initButtons() {
         // Botón guardar
         binding.btnGuardar.setOnClickListener {
@@ -209,6 +174,43 @@ class DetalleNotaActivity : AppCompatActivity() {
                 }
             }
     }
+
+    /**
+     * Lanza un Intent para que el usuario elija dónde guardar el archivo.
+     * El nombre del archivo sugerido es el título de la nota.
+     */
+    private fun lanzarIntentExportacion() {
+        val tituloYcontenido = binding.etTitulo.text.isEmpty() || binding.etContenido.text.isEmpty()
+        if (tituloYcontenido) {
+            Toast.makeText(this, "Sin titulo y descripcion. Imposible", Toast.LENGTH_SHORT).show()
+        } else {
+            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "text/plain"
+                val nombreArchivo = "${nota?.titulo?.replace(" ", "_") ?: "Nota"}.txt"
+                putExtra(Intent.EXTRA_TITLE, nombreArchivo)
+            }
+            exportarNotaLauncher.launch(intent)
+        }
+    }
+
+    /**
+     * Escribe el contenido de texto en el archivo seleccionado por el usuario.
+     * Reutiliza la misma lógica que MainActivity.
+     */
+    private fun escribirContenidoEnUri(uri: Uri, contenido: String) {
+        try {
+            contentResolver.openOutputStream(uri)?.use { outputStream ->
+                outputStream.write(contenido.toByteArray())
+                Toast.makeText(this, "Nota exportada con éxito", Toast.LENGTH_LONG).show()
+            }
+        } catch (e: IOException) {
+            Toast.makeText(this, "Error al exportar la nota", Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
+    }
+
+
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun guardarNota() {

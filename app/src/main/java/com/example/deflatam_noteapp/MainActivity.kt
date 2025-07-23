@@ -2,13 +2,12 @@ package com.example.deflatam_noteapp
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -22,6 +21,7 @@ import com.example.deflatam_noteapp.data.NotasManager
 import com.example.deflatam_noteapp.databinding.ActivityMainBinding
 import com.example.deflatam_noteapp.model.Nota
 import com.example.deflatam_noteapp.utils.NotificationUtils
+import com.example.deflatam_noteapp.utils.ThemeManager
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
@@ -104,6 +104,10 @@ class MainActivity : AppCompatActivity() {
         binding.botonExportarTodo.setOnClickListener {
             lanzarIntentExportacion()
         }
+
+        binding.toolbarBusqueda.botonCambiarTemaClaroOscuro.setOnClickListener {
+            mostrarDialogoDeTema()
+        }
     }
 
     private fun initSearchView() {
@@ -175,6 +179,25 @@ class MainActivity : AppCompatActivity() {
         }
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
+    }
+
+    /**
+     * Muestra un diálogo para que el usuario elija el tema de la aplicación.
+     * Las opciones son Claro, Oscuro o Predeterminado del sistema.
+     */
+    private fun mostrarDialogoDeTema() {
+        val opciones = arrayOf("Claro", "Oscuro", "Predeterminado del sistema")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Seleccionar Tema")
+        builder.setItems(opciones) { dialog, which ->
+            val themeMode = when (which) {
+                0 -> ThemeManager.THEME_LIGHT
+                1 -> ThemeManager.THEME_DARK
+                else -> ThemeManager.THEME_SYSTEM
+            }
+            ThemeManager.setTheme(this, themeMode)
+        }
+        builder.show()
     }
 
     /**

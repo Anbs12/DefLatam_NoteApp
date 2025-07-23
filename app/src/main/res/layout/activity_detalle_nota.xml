@@ -98,7 +98,6 @@
             android:layout_weight="1"
             android:text="Recordar"
             android:textColor="@android:color/white"
-            android:backgroundTint="@color/purple_500"
             android:layout_marginStart="8dp" />
 
         <Button
