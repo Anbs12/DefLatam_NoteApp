@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray_dark">#212121</color>
+    <color name="red_error">#B00020</color>
+    <color name="green_success">#4CAF50</color>
+
+    <!-- Colores de la App - Modo Claro -->
+    <color name="colorPrimary">#0A87FB</color>
+    <color name="colorPrimaryVariant">#007BEE</color>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorSecondaryVariant">#018786</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorBackground">#F5F5F5</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+
 </resources>

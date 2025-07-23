@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DefLatam_NoteApp</string>
+    <string name="nueva_nota">Nueva Nota</string>
+    <string name="titulo">Título</string>
+    <string name="contenido">Contenido</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="guardar">Guardar</string>
+    <string name="buscar">Buscar notas...</string>
+    <string name="desc_fab_agregar">Agregar nueva nota</string>
 </resources>

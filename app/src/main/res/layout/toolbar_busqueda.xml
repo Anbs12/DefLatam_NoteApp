@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:theme="@style/Base.Theme.DefLatam_NoteApp"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/buscar" />
+
+    <Spinner
+        android:id="@+id/spinnerCategoriaToolBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:spinnerMode="dropdown"
+        android:theme="@style/Base.Theme.DefLatam_NoteApp" />
+
+    <Button
+        android:id="@+id/botonCambiarTemaClaroOscuro"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Cambiar Tema"/>
+
+
+</androidx.appcompat.widget.Toolbar>
