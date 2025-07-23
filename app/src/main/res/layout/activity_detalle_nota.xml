@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".DetalleNotaActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Campo de título -->
+    <EditText
+        android:id="@+id/etTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título de la nota"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:inputType="text"
+        android:maxLines="2" />
+
+    <!-- Línea separadora -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Campo de contenido -->
+    <EditText
+        android:id="@+id/etContenido"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Escribe tu nota aquí..."
+        android:gravity="top"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:inputType="textMultiLine"
+        android:overScrollMode="ifContentScrolls" />
+
+    <!-- Contenedor de botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Guardar"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/purple_500"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eliminar"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
