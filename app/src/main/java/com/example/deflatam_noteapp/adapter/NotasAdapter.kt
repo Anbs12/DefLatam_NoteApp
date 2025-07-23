@@ -1,14 +1,14 @@
 package com.example.deflatam_noteapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deflatam_noteapp.R
+import com.example.deflatam_noteapp.data.NotasManager
 import com.example.deflatam_noteapp.model.Nota
-import java.text.SimpleDateFormat
-import java.util.*
 
 class NotasAdapter(
     private val onNotaClick: (Nota) -> Unit
@@ -36,8 +36,7 @@ class NotasAdapter(
             tvTitulo.text = if (nota.titulo.isNotEmpty()) nota.titulo else "Sin título"
 
             // Formatear y mostrar la fecha
-            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-            tvFecha.text = sdf.format(Date(nota.fechaCreacion))
+            tvFecha.text = NotasManager.formatearFecha(nota.fechaCreacion)
 
             itemView.setOnClickListener {
                 onNotaClick(nota)
@@ -45,6 +44,7 @@ class NotasAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun actualizarNotas(nuevasNotas: List<Nota>) {
         notas.clear()
         notas.addAll(nuevasNotas)

@@ -2,6 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- PERMISOS PARA NOTIFICACIONES Y ALARMAS -->
+
+    <!-- (Android 13+ | API 33+) Permiso en tiempo de ejecución para mostrar notificaciones. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- (Android 12+ | API 31+) Permiso para programar alarmas exactas. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- (Android < 12) Permiso para asegurar que el procesador no se suspenda durante la notificación. -->
+    <!-- Es de instalación, no requiere solicitud en tiempo de ejecución. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Permiso para volver a programar las alarmas después de que el dispositivo se reinicie. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Permiso necesario para que las alarmas puedan ejecutarse mientras la app está en segundo plano. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +29,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DefLatam_NoteApp">
+
+        <!-- Declaración del BroadcastReceiver -->
+        <receiver
+            android:name=".utils.receivers.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

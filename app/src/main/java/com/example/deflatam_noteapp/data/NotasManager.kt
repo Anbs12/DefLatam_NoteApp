@@ -1,6 +1,9 @@
 package com.example.deflatam_noteapp.data
 
 import com.example.deflatam_noteapp.model.Nota
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * Singleton para gestionar la lista de notas en memoria.
@@ -10,10 +13,15 @@ object NotasManager {
 
     /**Lista de notas en memoria*/
     private val notas = mutableListOf<Nota>()
+    private val categorias = mutableListOf<String>(
+        "General",
+        "Universidad",
+        "Trabajo",
+        "Vacaciones"
+    )
 
     init {
-        agregarNota(Nota(System.currentTimeMillis(), "Nota de ejemplo", "Este es el contenido de prueba."))
-        agregarNota(Nota(System.currentTimeMillis(), "Recordatorio", "Editame o algo no lo se, averigualo"))
+        agregarNota(Nota(1, "Nota 1", "Contenido de la nota 1"))
     }
 
     /** Obtener todas las notas ordenadas por fecha (más recientes primero)*/
@@ -48,5 +56,61 @@ object NotasManager {
         if (index != -1) {
             notas[index] = nuevaNota
         }
+    }
+
+    /** Formatear y mostrar la fecha
+     * @param time La fecha en milisegundos.*/
+    fun formatearFecha(time: Long): String{
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+        return sdf.format(Date(time))
+    }
+
+    /**
+     * Obtiene una lista de todas las categorías únicas existentes.
+     * Útil para poblar un Spinner o un menú de filtros.
+     */
+    fun obtenerCategoriasUnicas(): List<String> {
+        //return notas.map { it.categoria }.distinct().sorted()
+        return categorias
+    }
+
+    /**
+     * Obtiene todas las notas que pertenecen a una categoría específica.
+     * Filtra la lista principal de notas por la categoría dada.
+     */
+    fun obtenerNotasPorCategoria(categoria: String): List<Nota> {
+        return notas.filter { it.categoria.equals(categoria, ignoreCase = true) }
+            .sortedByDescending { it.fechaCreacion }
+    }
+
+    /**
+     * Obtiene las notas que tienen un recordatorio programado en el futuro.
+     * Es la base para el sistema de notificaciones.
+     */
+    fun obtenerNotasConRecordatorioPendiente(): List<Nota> {
+        val ahora = Date()
+        return notas.filter { it.recordatorio != null && it.recordatorio!!.after(ahora) }
+    }
+
+    /**
+     * Convierte una lista de notas a un único String formateado.
+     * Ideal para exportar a un archivo de texto o compartir.
+     */
+    fun exportarNotasAString(listaDeNotas: List<Nota>): String {
+        val builder = StringBuilder()
+        val formatoFecha = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
+
+        builder.append("--- EXPORTACIÓN DE NOTAS ---\n\n")
+        listaDeNotas.forEach { nota ->
+            builder.append("TÍTULO: ${nota.titulo}\n")
+            builder.append("FECHA: ${formatoFecha.format(nota.fechaCreacion)}\n")
+            builder.append("CATEGORÍA: ${nota.categoria}\n")
+            nota.recordatorio?.let {
+                builder.append("RECORDATORIO: ${formatoFecha.format(it)}\n")
+            }
+            builder.append("CONTENIDO:\n${nota.contenido}\n")
+            builder.append("----------------------------------------\n\n")
+        }
+        return builder.toString()
     }
 }

@@ -24,8 +24,29 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:padding="8dp"
+        android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_nota" />
+
+    <TextView
+        android:id="@+id/tvSinNotas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:text="Sin notas"
+        android:visibility="gone"/>
+
+    <!-- BOTÓN PARA EXPORTAR -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonExportarTodo"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:text="Exportar notas"
+        app:icon="@android:drawable/ic_menu_save" />
 
     <!-- Botón flotante para nueva nota -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

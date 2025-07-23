@@ -7,6 +7,30 @@
     android:padding="16dp"
     tools:context=".DetalleNotaActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoria: "/>
+
+        <Spinner
+            android:id="@+id/spinnerCategoriaDetalleNota"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:dropDownVerticalOffset="16dp"
+            android:dropDownHorizontalOffset="16dp"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
     <!-- Campo de título -->
     <EditText
         android:id="@+id/etTitulo"
@@ -42,6 +66,14 @@
         android:inputType="textMultiLine"
         android:overScrollMode="ifContentScrolls" />
 
+    <!-- Mostrar fecha recordatorio si existe -->
+    <TextView
+        android:id="@+id/tvFechaRecordatorio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""/>
+
     <!-- Contenedor de botones -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,8 +88,18 @@
             android:layout_weight="1"
             android:text="Guardar"
             android:textColor="@android:color/white"
-            android:backgroundTint="@color/purple_500"
+            android:backgroundTint="@color/green_success"
             android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnRecordatorio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Recordar"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/purple_500"
+            android:layout_marginStart="8dp" />
 
         <Button
             android:id="@+id/btnEliminar"
@@ -68,6 +110,16 @@
             android:textColor="@android:color/white"
             android:backgroundTint="@android:color/holo_red_light"
             android:layout_marginStart="8dp" />
+
+        <!-- BOTÓN PARA EXPORTAR NOTA INDIVIDUAL -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonExportarNota"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Exportar" />
 
     </LinearLayout>
 
